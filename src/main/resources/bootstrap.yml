@@ -1,0 +1,25 @@
+
+spring:
+  application:
+    name: spring-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+      - id: project-one-ms-account #name of service
+        uri: lb://project-one-ms-account
+        predicates:
+        - Path=/account/**
+      - id: transfer-service
+        uri: lb://transfer-service
+        predicates:
+        - Path=/transfer/**
+      - id: report-service
+        uri: lb://report-service
+        predicates:
+        - Path=/report/**
