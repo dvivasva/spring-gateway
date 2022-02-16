@@ -23,3 +23,11 @@ spring:
         uri: lb://report-service
         predicates:
         - Path=/report/**
+      - id: customer-service
+        uri: lb://customer-service
+        predicates:
+        - Path=/customer/**
+      - id: card-service
+        uri: lb://card-service
+        predicates:
+        - Path=/card/**
